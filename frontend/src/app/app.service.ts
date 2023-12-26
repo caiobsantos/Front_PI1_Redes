@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AppService {
 
   private apiRoot = 'http://127.0.0.1:8000/';
-  private pythonServerUrl = 'http://localhost:8080';
+  private pythonServerUrl = 'http://127.0.0.1:8080';
 
   constructor(private http: HttpClient) { }
 

@@ -96,31 +96,31 @@ export class HomeComponent implements OnInit{
   //   }
   //   fileReader.readAsText(this.file);
   // }
-  uploadFileInstante(e: any){
-    let fileReader = new FileReader();
-    fileReader.onload = (e) => {
-      console.log(fileReader.result as string)
-      this.dadosInstante = JSON.parse(fileReader.result as string);
-      console.log(this.dadosInstante);
-      this.dadosInstante.idVoo = this.selectedVoo;
-      this.appService.createInstanteVoo(this.dadosInstante).subscribe((res: HttpResponse<IInstante>) => {
-        this.dadosInstante = !!res.body ? res.body : this.dadosInstante;
-      })
-    }
-    fileReader.readAsText(this.file);
-  }
+  // uploadFileInstante(e: any){
+  //   let fileReader = new FileReader();
+  //   fileReader.onload = (e) => {
+  //     console.log(fileReader.result as string)
+  //     this.dadosInstante = JSON.parse(fileReader.result as string);
+  //     console.log(this.dadosInstante);
+  //     this.dadosInstante.idVoo = this.selectedVoo;
+  //     this.appService.createInstanteVoo(this.dadosInstante).subscribe((res: HttpResponse<IInstante>) => {
+  //       this.dadosInstante = !!res.body ? res.body : this.dadosInstante;
+  //     })
+  //   }
+  //   fileReader.readAsText(this.file);
+  // }
 
-//   uploadFileInstante(e: any){
-//     let fileReader = new FileReader();
-//     fileReader.onload = (e) => {
-//       console.log(fileReader.result as string)
-//       this.instanteDados = fileReader.result as string;
-//       let newInstante = this.selectedVoo + '\n' + this.instanteDados
-//       this.appService.createInstante(newInstante).subscribe(res => {
-//         console.log('Response from Python server:', res);
-//         // this.dadosInstante = !!res.body ? res.body : this.dadosInstante;
-//       })
-//     }
-//     fileReader.readAsText(this.file);
-//   }
+uploadFileInstante(e: any){
+  let fileReader = new FileReader();
+  fileReader.onload = (e) => {
+    console.log(fileReader.result as string)
+    this.instanteDados = fileReader.result as string;
+    let newInstante = this.selectedVoo + '\n' + this.instanteDados
+    this.appService.createInstante(newInstante).subscribe(res => {
+      console.log('Response from Python server:', res);
+      // this.dadosInstante = !!res.body ? res.body : this.dadosInstante;
+    })
+  }
+  fileReader.readAsText(this.file);
+}
 }
